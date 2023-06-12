@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adopt - {{ pet.name }}</title>
+</head>
+<body>
+    <h1>{{ pet.name }}</h1>
+    <p>Species: {{ pet.species }}</p>
+    {% if pet.photo_url %}
+    <img src="{{ pet.photo_url }}" alt="{{ pet.name }} Photo" width="200">
+    {% endif %}
+    {% if pet.age %}
+    <p>Age: {{ pet.age }}</p>
+    {% endif %}
+    <h2>Edit Pet</h2>
+    <form method="POST">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.photo_url.label }}: {{ form.photo_url }}
+            {% if form.photo_url.errors %}
+            <ul>
+                {% for error in form.photo_url.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.notes.label }}: {{ form.notes }}
+            {% if form.notes.errors %}
+            <ul>
+                {% for error in form.notes.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.available.label }}: {{ form.available }}
+        </div>
+        <div>
+            <input type="submit" value="Update Pet">
+        </div>
+    </form>
+</body>
+</html>

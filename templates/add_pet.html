@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adopt - Add a Pet</title>
+</head>
+<body>
+    <h1>Add a Pet</h1>
+    <form method="POST">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.name.label }}: {{ form.name }}
+            {% if form.name.errors %}
+            <ul>
+                {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.species.label }}: {{ form.species }}
+            {% if form.species.errors %}
+            <ul>
+                {% for error in form.species.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.photo_url.label }}: {{ form.photo_url }}
+            {% if form.photo_url.errors %}
+            <ul>
+                {% for error in form.photo_url.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.age.label }}: {{ form.age }}
+            {% if form.age.errors %}
+            <ul>
+                {% for error in form.age.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.notes.label }}: {{ form.notes }}
+            {% if form.notes.errors %}
+            <ul>
+                {% for error in form.notes.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div>
+            <input type="submit" value="Add Pet">
+        </div>
+    </form>
+</body>
+</html>
